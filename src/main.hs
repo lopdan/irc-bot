@@ -94,9 +94,4 @@ privmsg msg = write "PRIVMSG" (myChan ++ " :" ++ msg)
 
 
 randomsg :: String -> Net ()
-randomsg x = do 
-  s <- readFile "truth.txt"
-  write "PRIVMSG" (myChan ++ " :" ++ s)
-
-doSomethingWith :: String -> Net ()
-doSomethingWith str = write "PRIVMSG" (myChan ++ " :" ++ str)
+randomsg x = readFile "truth.txt" >>= \strFile -> return (write "PRIVMSG" strFile)
