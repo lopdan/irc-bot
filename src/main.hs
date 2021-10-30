@@ -1,14 +1,11 @@
--- File 4.hs
-
-import Control.Exception              -- base
-import Control.Monad.IO.Class         --
-import Data.List                      --
-import System.Exit                    --
-import System.IO                      --
-import qualified Network.Socket as N  -- network
-import Control.Monad.Trans.Reader     -- transformers
+import Control.Exception              
+import Control.Monad.IO.Class         
+import Data.List                      
+import System.Exit                    
+import System.IO                      
+import qualified Network.Socket as N  
+import Control.Monad.Trans.Reader     
 import System.IO  
-import Control.Monad
 
 -- Configuration options
 myServer = "irc.libera.chat" :: String
