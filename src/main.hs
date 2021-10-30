@@ -84,14 +84,14 @@ listen = forever $ do
 -- Commands
 eval :: String -> Net ()
 eval "!quit" = write "QUIT" ":Exiting" >> liftIO exitSuccess
-eval x | "!id " `isPrefixOf` x = privmsg (drop 4 x)
-eval x | "!tt " `isPrefixOf` x = randomsg (x)
+eval x | "!wp " `isPrefixOf` x = privmsg (drop 4 x)
+eval x | "!tt " `isPrefixOf` x = truthmsg (x)
 eval _ = return ()
 
 -- Private message to user
 privmsg :: String -> Net ()
 privmsg msg = write "PRIVMSG" (myChan ++ " :" ++ msg)
 
-
-randomsg :: String -> Net ()
-randomsg x = readFile "truth.txt" >>= \strFile -> return (write "PRIVMSG" strFile)
+-- Tells the truth in open channel
+truthmsg :: String -> Net ()
+truthmsg x = readFile "truth.txt" >>= \strFile -> return (write "PRIVMSG" strFile)
